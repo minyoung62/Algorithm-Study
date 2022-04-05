@@ -24,3 +24,19 @@ def solution(id_list, report, k):
 
     return answer
 
+def renew_solution(id_list, report, k):
+    answer = [0] * len(id_list)
+
+    report = set(report)
+
+    reportCount = dict((x, 0) for x in id_list)
+    for r in report:
+        reportCount[r.split()[1]] += 1
+
+    for r in report:
+        if reportCount[r.split()[1]] >= k:
+            answer[id_list.index(r.split()[0])] += 1
+
+
+
+    return answer
