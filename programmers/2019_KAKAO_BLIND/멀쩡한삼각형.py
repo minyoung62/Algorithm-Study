@@ -20,7 +20,7 @@ def solution(w, h):
 
     if w == h:
         return w*h - w
-    elif w == 1 or h == 2:
+    elif w == 1 or h == 1:
         return 0
 
     c = 0
