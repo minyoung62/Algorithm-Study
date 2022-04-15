@@ -29,8 +29,6 @@ def solution(dirs):
             print(goto)
             answer += 1
 
-
-
         x = nx
         y = ny
         
