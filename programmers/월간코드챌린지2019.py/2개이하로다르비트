@@ -1,0 +1,29 @@
+def solution(numbers):
+    answer = []
+
+
+    for number in numbers:
+        
+        nextNumber = number + 1
+
+        binNumber = bin(number)[2:]
+        binNumber = binNumber[::-1]
+
+        # 1만 있는 경우
+        if len(set(list(binNumber))) == 1 and list(set(list(binNumber)))[0] == '1':
+            answer.append(number+2 ** (len(binNumber)-1))
+
+
+        # 0이 있는 경우
+        else:
+            zeroIndex = list(binNumber).index('0')
+            if zeroIndex == 0 or zeroIndex == 1:
+                answer.append(number+1)
+            else:
+                answer.append(number + 2**(zeroIndex-1))
+
+
+
+    return answer
+
+print(solution([2, 7]))
