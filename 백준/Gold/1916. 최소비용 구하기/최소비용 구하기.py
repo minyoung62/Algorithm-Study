@@ -1,11 +1,10 @@
 from sys import stdin
 
-input = stdin.readline().strip
+inp= stdin.readline
 
-n  = int(input())
+n  = int(inp())
 
-input = stdin.readline().strip
-m = int(input())
+m = int(inp())
 
 graph = [
     []
@@ -14,13 +13,11 @@ graph = [
 
 for i in range(m):
     
-    input = stdin.readline().strip
-    a, b, cost = tuple(map(int, input().split()))
+    a, b, cost = tuple(map(int, inp().split()))
     graph[a].append((b, cost))
 
 
-input = stdin.readline().strip
-s, e = tuple(map(int, input().split()))
+s, e = tuple(map(int, inp().split()))
 
 
 INF = 1e9
