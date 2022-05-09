@@ -1,0 +1,10 @@
+def solution(numbers):
+    answer = -1
+
+    l = [i for i in range(10)]
+
+    for i in numbers:
+        l.remove(i)
+    answer = sum(l)
+
+    return answer
