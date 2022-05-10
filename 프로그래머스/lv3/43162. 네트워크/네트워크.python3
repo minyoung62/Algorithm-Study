@@ -1,0 +1,43 @@
+def dfs(x, graph, visited):
+    connect_count = False
+    
+    s = [ ]
+    s.append(x)
+    visited[x] = True
+    while s:
+        x = s.pop()
+        for i in graph[x]:
+            if visited[i] == False:
+                visited[i] = True
+                s.append(i)
+                
+                
+
+
+    return connect_count
+    
+    
+
+def solution(n, computers):
+    answer = 0
+    visited = [False for i in range(n)]
+
+    graph = [
+        []
+        for _ in range(n)
+    ]
+    for i in range(n):
+        for j in range(n):
+            if i !=j and computers[i][j] != 0:
+                graph[i].append(j)
+
+    for i in range(n):
+        
+        if visited[i] == False:
+            answer += 1
+            dfs(i, graph, visited)
+        else:
+            continue
+    
+    return answer
+print(solution(3, 	[[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
