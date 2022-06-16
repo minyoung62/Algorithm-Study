@@ -1,0 +1,25 @@
+def solution(n):
+    answer = 0
+    
+    if n%2 == 1:
+        return 0
+    if n == 2:
+        return 3
+    # dp 테이블 정의
+    # dp[i]:= i위치가 주어졌을 때 i번째 위치는 직사각형을 2x1과 1x2 타일로 채울 수 있는 모든 경우의 수 
+    dp = [0] * (n + 1)
+    # dp 초기화
+    dp[1] = 2
+    dp[2] = 3
+    
+    
+    # dp 채우기
+    for i in range(3,n+1):
+        if i % 2 == 1:
+            dp[i] = (dp[i-1] * 2 + dp[i-2]) % 1000000007
+        else:
+            dp[i] = (dp[i-2] *3 + dp[i-3]) %  1000000007
+    # 출력
+
+    answer =dp[-1]
+    return answer
