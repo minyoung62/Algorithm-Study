@@ -1,0 +1,18 @@
+def solution(n, lost, reserve):
+    answer = n
+    
+    
+    setLost = set(lost) - set(reserve)
+    setReserve =  set(reserve) - set(lost)
+    
+       
+    
+    for i in setLost:
+        if i - 1 in setReserve:
+            setReserve.remove(i-1)
+        elif i + 1 in setReserve:
+            setReserve.remove(i+1)
+        else:
+            answer -= 1
+        
+    return answer
