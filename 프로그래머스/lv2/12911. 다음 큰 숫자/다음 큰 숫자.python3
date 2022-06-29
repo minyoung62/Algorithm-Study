@@ -1,0 +1,12 @@
+def solution(n):
+    answer = 0
+    
+    nextLargeNum = n + 1
+    bnc = str(bin(n)[2:]).count('1')
+    
+    while bnc != str(bin(nextLargeNum)[2:]).count('1'):
+        nextLargeNum += 1
+    
+    answer = nextLargeNum
+    
+    return answer
