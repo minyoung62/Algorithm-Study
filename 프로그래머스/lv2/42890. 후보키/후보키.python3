@@ -1,0 +1,46 @@
+from itertools import combinations
+
+def solution(relation):
+    answer = 0
+
+    c = len(relation)
+    r = len(relation[0])
+
+    if r == 1:
+        if len(set(map(tuple, relation))) == c:
+            return 1
+        else:
+            return 0
+
+    
+    case = []
+    
+    for i in range(1, r + 1):
+        for j in combinations(range(r), i):
+            tmp = []
+
+            # 묶음으로 만들고
+            for kk in range(c):
+                t = []
+                for k in j:
+                    t.append(relation[kk][k])
+                tmp.append(tuple(t))
+
+            # set을 통해 갯수가 c개인지 확인 
+            if len(set(tmp)) != c:
+                continue
+            
+            # case에 있는지 체크
+            isPresent = False
+            for i in range(len(case)):
+                if set(case[i]).issubset(set(j)):
+                    isPresent = True
+                
+            # case에 없으면 case에 추가 
+            if isPresent:
+
+                continue
+            case.append(j)
+
+    answer = len(case)
+    return answer
