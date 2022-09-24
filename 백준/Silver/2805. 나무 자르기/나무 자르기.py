@@ -1,31 +1,26 @@
 import sys
-si = sys.stdin.readline
 
-n, m = tuple(map(int, si().split()))
-
-nList = list(map(int, si().split()))
+n,m = map(int,input().split())
+input_data = list(map(int,sys.stdin.readline().rstrip().split()))
 
 
-l, r , ans = 0, 2000000000, 0
+# 10 , 15 ,17 20
+ans = 0
+def binary_search(array,target,start,end):
+  global ans
+  if start > end:
+      return ans-1
+  total = 0
+  mid = (start + end)//2
+  for i in array:
+      if i > mid:
+          total += i - mid
 
-def determination(mid):
-    sum = 0
-    for i in range(n):
-        if nList[i] > mid:
-            sum += nList[i] - mid
-    
-    return sum >= m
+  if total >= target:
+      ans = mid
+      return binary_search(array,target,mid+1,end)
+  else:
+      return binary_search(array,target,start,mid-1)
 
-def binarySearch(l, r, ans):
-
-    while l <= r:
-        mid = (l + r ) // 2
-        
-        if determination(mid):
-            ans = mid
-            l = mid + 1
-        else:
-            r = mid - 1
-    return ans
-ans = binarySearch(l, r, ans)
+binary_search(input_data,m,0,max(input_data))
 print(ans)
